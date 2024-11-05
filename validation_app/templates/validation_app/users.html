@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Users</title>
+</head>
+<body>
+
+<form action="{% url 'create_user' %}" method="post">
+    {% csrf_token %}
+        {% for field in form_user %} <!-- отображение филдов-->
+
+        {% for error in field.errors %}
+            <p style="color: red">{{ error }}</p>   <!-- ошибки филдов-->
+        {% endfor %}
+
+        <p>{{ field.label }}</p> <!-- название филдов-->
+        {{ field }}    <!-- сами филды-->
+
+    {% endfor %}
+    <button>save</button>
+</form>
+
+
+</body>
+</html>
